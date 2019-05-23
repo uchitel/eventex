@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+def bintrayRepo = 'eventex'
+def bintrayUserOrg = 'uchitel'
+def bintrayGroup = 'dev.uchitel'
+def siteUrl = 'https://github.com/uchitel/eventex'
+def gitUrl = 'https://github.com/uchitel/eventex.git'
+// credentials (bintray.user, bintray.apikey) in ~/.gradle/gradle.properties
+// implementation 'groupId:artifactId:version’
+
+publish {
+    repoName = bintrayRepo
+    userOrg = bintrayUserOrg
+    groupId = bintrayGroup
+    artifactId = project.ext.projectName
+    uploadName = project.ext.uploadName
+    publishVersion = project.version
+    desc = project.description
+    website = siteUrl
+    repository = gitUrl
+
+    bintrayUser = project.hasProperty("bintray.user") ? project.getProperty("bintray.user") : ""
+    bintrayKey = project.hasProperty("bintray.apikey") ? project.getProperty("bintray.apikey") : ""
+
+    dryRun = false
+}
