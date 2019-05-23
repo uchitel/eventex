@@ -18,11 +18,11 @@
 
 package dev.uchitel.eventex;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
- * Classes that extend {@link android.view.ViewGroup ViewGroup}, {@link androidx.fragment.app.Fragment Fragment}, or {@link android.app.Activity Activity}
- * can implement UiEventListener interface to receive {@link dev.uchitel.eventex.UiEvent UiEvent} events.
+ * Classes that extend {@link android.view.ViewGroup ViewGroup}, {@link android.support.v4.app.Fragment Fragment}, or {@link android.app.Activity Activity}
+ * can impleement UiEventListener interface to receive {@link dev.uchitel.eventex.UiEvent UiEvent} events.
  */
 public interface UiEventListener {
     /**

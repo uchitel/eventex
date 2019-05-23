@@ -19,19 +19,19 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import androidx.fragment.app.Fragment;
+import android.support.v4.app.Fragment;
 
 import dev.uchitel.eventex.UiEvent;
 import dev.uchitel.eventex.UiEventListener;
 
 /**
+ *
  */
 public class FragmentReceiver extends Fragment implements UiEventListener {
     private EditText editText;

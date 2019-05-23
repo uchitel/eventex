@@ -22,9 +22,9 @@ import android.app.Activity
 import android.os.Parcel
 import android.os.Parcelable
 import android.view.View
-import androidx.annotation.AnyThread
-import androidx.annotation.UiThread
-import androidx.fragment.app.Fragment
+import android.support.annotation.AnyThread
+import android.support.annotation.UiThread
+import android.support.v4.app.Fragment
 
 /**
  * Defines a message that can be delivered to any UI component within single activity.

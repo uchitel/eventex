@@ -24,7 +24,8 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
+
 import dev.uchitel.eventex.UiEvent;
 import dev.uchitel.eventex.UiEventListener;
 
