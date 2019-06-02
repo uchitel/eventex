@@ -19,7 +19,7 @@
 package com.example.testapplication;
 
 /**
- * Set of unique strings to identify UiEvent messages
+ * Set of unique strings to identify UIEvent messages
  */
 class MsgIds {
     static final String MSG_WITH_TEXT = "msg with text";

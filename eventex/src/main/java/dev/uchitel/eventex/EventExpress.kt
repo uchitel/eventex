@@ -34,7 +34,7 @@ import android.content.ContextWrapper
 import android.util.Log
 
 @AnyThread
-internal fun Activity.postMessage(uiEvent: UiEvent) {
+internal fun Activity.postMessage(uiEvent: UIEvent) {
     Handler(Looper.getMainLooper()).post {
         if (!sendMessage(uiEvent)) {
             Log.w("EventEx", "unprocessed $uiEvent")
@@ -43,18 +43,21 @@ internal fun Activity.postMessage(uiEvent: UiEvent) {
 }
 
 @UiThread
-internal fun Fragment.postMessage(message: UiEvent) {
+internal fun Fragment.postMessage(message: UIEvent) {
+    assert(activity != null) { "Fragment must be attached to activity to post UIEvent." }
     activity?.postMessage(message)
 }
 
 @UiThread
-internal fun View.postMessage(uiEvent: UiEvent) {
-    getActivity(context)?.postMessage(uiEvent)
+internal fun View.postMessage(uiEvent: UIEvent) {
+    val activity: Activity? = getActivity(context)
+    assert(activity != null) { "View must be attached to view hierarchy to post UIEvent." }
+    activity?.postMessage(uiEvent)
 }
 
 @UiThread
-private fun Activity.sendMessage(uiEvent: UiEvent): Boolean {
-    (this as? UiEventListener)?.run {
+private fun Activity.sendMessage(uiEvent: UIEvent): Boolean {
+    (this as? UIEventListener)?.run {
         if (onMessageIntercept(uiEvent))
             return true
     }
@@ -67,7 +70,7 @@ private fun Activity.sendMessage(uiEvent: UiEvent): Boolean {
     if (propagateUiEvent(uiEvent))
         return true
 
-    (this as? UiEventListener)?.run {
+    (this as? UIEventListener)?.run {
         if (onMessage(uiEvent))
             return true
     }
@@ -76,7 +79,7 @@ private fun Activity.sendMessage(uiEvent: UiEvent): Boolean {
 }
 
 @UiThread
-private fun Activity.propagateUiEvent(uiEvent: UiEvent): Boolean {
+private fun Activity.propagateUiEvent(uiEvent: UIEvent): Boolean {
     getRootGroup()?.run {
         return propagateUiEvent(uiEvent)
     }
@@ -85,7 +88,7 @@ private fun Activity.propagateUiEvent(uiEvent: UiEvent): Boolean {
 }
 
 @UiThread
-private fun FragmentActivity.propagateFragmentMessage(uiEvent: UiEvent): Boolean {
+private fun FragmentActivity.propagateFragmentMessage(uiEvent: UIEvent): Boolean {
     val fragManager = supportFragmentManager
 
     fragManager
@@ -99,8 +102,8 @@ private fun FragmentActivity.propagateFragmentMessage(uiEvent: UiEvent): Boolean
 }
 
 @UiThread
-private fun propagateNestedFragments(frag: Fragment, uiEvent: UiEvent): Boolean {
-    (frag as? UiEventListener)?.run {
+private fun propagateNestedFragments(frag: Fragment, uiEvent: UIEvent): Boolean {
+    (frag as? UIEventListener)?.run {
         if (onMessageIntercept(uiEvent))
             return true
     }
@@ -112,7 +115,7 @@ private fun propagateNestedFragments(frag: Fragment, uiEvent: UiEvent): Boolean 
                     return true
             }
 
-    (frag as? UiEventListener)?.run {
+    (frag as? UIEventListener)?.run {
         if (onMessage(uiEvent))
             return true
     }
@@ -121,8 +124,8 @@ private fun propagateNestedFragments(frag: Fragment, uiEvent: UiEvent): Boolean 
 }
 
 @UiThread
-private fun ViewGroup.propagateUiEvent(uiEvent: UiEvent): Boolean {
-    (this as? UiEventListener)?.run {
+private fun ViewGroup.propagateUiEvent(uiEvent: UIEvent): Boolean {
+    (this as? UIEventListener)?.run {
         if (onMessageIntercept(uiEvent))
             return true
     }
@@ -132,7 +135,7 @@ private fun ViewGroup.propagateUiEvent(uiEvent: UiEvent): Boolean {
             return true
     }
 
-    (this as? UiEventListener)?.run {
+    (this as? UIEventListener)?.run {
         if (onMessage(uiEvent))
             return true
     }

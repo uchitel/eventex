@@ -35,7 +35,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.List;
 
-import dev.uchitel.eventex.UiEvent;
+import dev.uchitel.eventex.UIEvent;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -67,9 +67,9 @@ public class MainActivityUnitTest {
         View viewById = activity.findViewById(R.id.view_btn);
         assertNotNull(viewById);
 
-        new UiEvent("invalid_msg").post(viewById);
+        new UIEvent("invalid_msg").post(viewById);
 
-        assertTrue(ShadowLog.find("w EventEx unprocessed UiEvent [code=0, what='invalid_msg', namespace='', number=0, text='']"));
+        assertTrue(ShadowLog.find("w EventEx unprocessed UIEvent [code=0, what='invalid_msg', namespace='', number=0, text='']"));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class MainActivityUnitTest {
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
-        new UiEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(sender);
+        new UIEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(sender);
 
         assertEquals(TEXT, recipient.getText().toString());
         assertFalse(ShadowLog.find("EventEx unprocessed"));
@@ -94,7 +94,7 @@ public class MainActivityUnitTest {
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
-        new UiEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(sender);
+        new UIEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(sender);
 
         assertEquals(TEXT, recipient.getText().toString());
         assertFalse(ShadowLog.find("EventEx unprocessed"));
@@ -109,7 +109,7 @@ public class MainActivityUnitTest {
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
-        new UiEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(fragment);
+        new UIEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(fragment);
 
         assertEquals(TEXT, recipient.getText().toString());
         assertFalse(ShadowLog.find("EventEx unprocessed"));
@@ -124,7 +124,7 @@ public class MainActivityUnitTest {
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
-        new UiEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(fragment);
+        new UIEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(fragment);
 
         assertEquals(TEXT, recipient.getText().toString());
         assertFalse(ShadowLog.find("EventEx unprocessed"));
@@ -136,7 +136,7 @@ public class MainActivityUnitTest {
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
-        new UiEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(activity);
+        new UIEvent(MsgIds.MSG_WITH_TEXT).setText(TEXT).post(activity);
 
         assertEquals(TEXT, recipient.getText().toString());
         assertFalse(ShadowLog.find("EventEx unprocessed"));

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
-def bintrayRepo = 'eventex'
+def bintrayRepo = 'EventEx'
 def bintrayUserOrg = 'uchitel'
 def bintrayGroup = 'dev.uchitel'
 def siteUrl = 'https://github.com/uchitel/eventex'

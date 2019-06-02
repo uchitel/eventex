@@ -29,13 +29,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentParent extends Fragment implements UiEventListener {
+public class FragmentParent extends Fragment implements UIEventListener {
     private EditText editText;
 
     public FragmentParent() {
@@ -63,7 +63,7 @@ public class FragmentParent extends Fragment implements UiEventListener {
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
@@ -89,7 +89,7 @@ public class FragmentParent extends Fragment implements UiEventListener {
     }
 
     @Override
-    public boolean onMessageIntercept(@NonNull UiEvent uiEvent) {
+    public boolean onMessageIntercept(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }

@@ -22,19 +22,19 @@ import androidx.annotation.NonNull;
 
 /**
  * Classes that extend {@link android.view.ViewGroup ViewGroup}, {@link androidx.fragment.app.Fragment Fragment}, or {@link android.app.Activity Activity}
- * can implement UiEventListener interface to receive {@link dev.uchitel.eventex.UiEvent UiEvent} events.
+ * can implement UIEventListener interface to receive {@link dev.uchitel.eventex.UIEvent UIEvent} events.
  */
-public interface UiEventListener {
+public interface UIEventListener {
     /**
-     * Override this function to be notified of {@link dev.uchitel.eventex.UiEvent UiEvent} events. Any class deived from
+     * Override this function to be notified of {@link dev.uchitel.eventex.UIEvent UIEvent} events. Any class deived from
      * Activity, Fragment, or ViewGroup can override function onMessage.
      * <p>
      * The system implements children-first order of notification.
      *
-     * @param uiEvent UiEvent or its subclass
+     * @param uiEvent UIEvent or its subclass
      * @return true if message was processed, false to continue message broadcast
      */
-    boolean onMessage(@NonNull final UiEvent uiEvent);
+    boolean onMessage(@NonNull final UIEvent uiEvent);
 
     /**
      * Function onMessageIntercept is called for Activities, Fragments, ViewGroups and classes derived
@@ -43,10 +43,10 @@ public interface UiEventListener {
      * Override this function only when some parent layout must intercept some message processed
      * by it's child and there is no way to modify child layout to achieve desired behaviour.
      *
-     * @param uiEvent {@link UiEvent} or its subclass
+     * @param uiEvent {@link UIEvent} or its subclass
      * @return true if message was processed, false to continue message broadcast
      */
-    default boolean onMessageIntercept(@NonNull final UiEvent uiEvent) {
+    default boolean onMessageIntercept(@NonNull final UIEvent uiEvent) {
         return false;
     }
 }

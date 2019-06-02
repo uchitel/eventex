@@ -31,10 +31,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
-public class MainActivity extends AppCompatActivity implements Button.OnClickListener, UiEventListener {
+public class MainActivity extends AppCompatActivity implements Button.OnClickListener, UIEventListener {
     private static final String TAG = "MainActivity";
 
     int current = R.id.button1;
@@ -151,8 +151,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
-        Log.d(TAG, "onUiEvent() " + uiEvent);
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
+        Log.d(TAG, "onMessage() " + uiEvent);
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     }
 
     @Override
-    public boolean onMessageIntercept(@NonNull UiEvent uiEvent) {
+    public boolean onMessageIntercept(@NonNull UIEvent uiEvent) {
         Log.d(TAG, "onMessageIntercept() " + uiEvent);
         if (!uiEvent.isAppNamespace()) {
             return false;

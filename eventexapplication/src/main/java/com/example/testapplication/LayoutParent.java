@@ -27,10 +27,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
-public class LayoutParent extends FrameLayout implements UiEventListener {
+public class LayoutParent extends FrameLayout implements UIEventListener {
     public LayoutParent(Context context) {
         super(context);
         init();
@@ -56,7 +56,7 @@ public class LayoutParent extends FrameLayout implements UiEventListener {
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
@@ -82,7 +82,7 @@ public class LayoutParent extends FrameLayout implements UiEventListener {
     }
 
     @Override
-    public boolean onMessageIntercept(@NonNull UiEvent uiEvent) {
+    public boolean onMessageIntercept(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }

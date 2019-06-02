@@ -34,7 +34,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import dev.uchitel.eventex.UiEvent;
+import dev.uchitel.eventex.UIEvent;
 
 public class RVLayout extends FrameLayout {
     RecyclerView recyclerView;
@@ -86,28 +86,28 @@ public class RVLayout extends FrameLayout {
                 String text = holder1.text.getText().toString();
                 switch (text) {
                     case "Mercury":
-                        new UiEvent(MsgIds.MSG_TO_ACTIVITY).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_ACTIVITY).setText(text).post(v1);
                         break;
                     case "Venus":
-                        new UiEvent(MsgIds.MSG_TO_PARENT).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_PARENT).setText(text).post(v1);
                         break;
                     case "Earth":
-                        new UiEvent(MsgIds.MSG_TO_CHILD).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_CHILD).setText(text).post(v1);
                         break;
                     case "Mars":
-                        new UiEvent(MsgIds.MSG_TO_GRANDCHILD).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_GRANDCHILD).setText(text).post(v1);
                         break;
                     case "Jupiter":
-                        new UiEvent(MsgIds.MSG_TO_PARENT_INTERCEPT).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_PARENT_INTERCEPT).setText(text).post(v1);
                         break;
                     case "Saturn":
-                        new UiEvent(MsgIds.MSG_TO_CHILD_INTERCEPT).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_CHILD_INTERCEPT).setText(text).post(v1);
                         break;
                     case "Uranus":
-                        new UiEvent(MsgIds.MSG_TO_GRANDCHILD_INTERCEPT).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_GRANDCHILD_INTERCEPT).setText(text).post(v1);
                         break;
                     case "Neptune":
-                        new UiEvent(MsgIds.MSG_TO_ACTIVITY_INTERCEPT).setText(text).post(v1);
+                        new UIEvent(MsgIds.MSG_TO_ACTIVITY_INTERCEPT).setText(text).post(v1);
                         break;
                     default:
                         Log.d("RVLayout", "unprocessed message " + text);

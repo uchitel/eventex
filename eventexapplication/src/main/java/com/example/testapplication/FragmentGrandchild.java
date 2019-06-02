@@ -22,8 +22,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +33,7 @@ import android.widget.EditText;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentGrandchild extends Fragment implements UiEventListener {
+public class FragmentGrandchild extends Fragment implements UIEventListener {
     private View fragmentView;
 
     public FragmentGrandchild() {
@@ -49,7 +49,7 @@ public class FragmentGrandchild extends Fragment implements UiEventListener {
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
@@ -75,7 +75,7 @@ public class FragmentGrandchild extends Fragment implements UiEventListener {
     }
 
     @Override
-    public boolean onMessageIntercept(@NonNull UiEvent uiEvent) {
+    public boolean onMessageIntercept(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
