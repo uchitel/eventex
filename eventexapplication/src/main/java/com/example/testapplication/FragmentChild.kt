@@ -24,17 +24,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import dev.uchitel.eventex.UiEvent
-import dev.uchitel.eventex.UiEventListener
+import dev.uchitel.eventex.UIEvent
+import dev.uchitel.eventex.UIEventListener
 
 /**
  * A simple [Fragment] subclass.
  *
  */
-class FragmentChild : Fragment(), UiEventListener {
+class FragmentChild : Fragment(), UIEventListener {
     private var editText: EditText? = null
 
-    override fun onMessage(uiEvent: UiEvent): Boolean {
+    override fun onMessage(uiEvent: UIEvent): Boolean {
         if (!uiEvent.isAppNamespace()) {
             return false
         }
@@ -62,7 +62,7 @@ class FragmentChild : Fragment(), UiEventListener {
         return false
     }
 
-    override fun onMessageIntercept(uiEvent: UiEvent): Boolean {
+    override fun onMessageIntercept(uiEvent: UIEvent): Boolean {
         if (!uiEvent.isAppNamespace()) {
             return false
         }

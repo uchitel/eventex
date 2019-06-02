@@ -19,17 +19,17 @@
 package com.example.testapplication;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import android.support.annotation.NonNull;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
-public class LayoutChild extends FrameLayout implements UiEventListener {
+public class LayoutChild extends FrameLayout implements UIEventListener {
     private EditText editText;
 
     public LayoutChild(Context context) {
@@ -58,7 +58,7 @@ public class LayoutChild extends FrameLayout implements UiEventListener {
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
@@ -84,7 +84,7 @@ public class LayoutChild extends FrameLayout implements UiEventListener {
     }
 
     @Override
-    public boolean onMessageIntercept(@NonNull UiEvent uiEvent) {
+    public boolean onMessageIntercept(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }

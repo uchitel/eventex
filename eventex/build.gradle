@@ -59,7 +59,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-project.version = '0.1.0'
+project.version = '0.2.0'
 
 project.description = 'Android library to exchange messages between UI components.'
 project.ext.displayName = 'Android Express Events Support'

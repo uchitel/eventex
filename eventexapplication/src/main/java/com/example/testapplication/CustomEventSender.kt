@@ -23,10 +23,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
-import dev.uchitel.eventex.UiEvent
+import dev.uchitel.eventex.UIEvent
 import java.util.*
 
-data class CustomUiEvent(val date: Date) : UiEvent(MsgIds.MSG_CUSTOM_DATA)
+data class CustomUIEvent(val date: Date) : UIEvent(MsgIds.MSG_CUSTOM_DATA)
 
 class ComplexObjectSender @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -40,7 +40,7 @@ class ComplexObjectSender @JvmOverloads constructor(
                 val title: EditText = findViewById(R.id.edit_text_title)
                 val editNumber: EditText = findViewById(R.id.edit_text_number)
 
-                CustomUiEvent(Calendar.getInstance().time)
+                CustomUIEvent(Calendar.getInstance().time)
                         .setText(title.text.toString() )
                         .setNumber(editNumber.text.toString().toInt())
                         .post(this)

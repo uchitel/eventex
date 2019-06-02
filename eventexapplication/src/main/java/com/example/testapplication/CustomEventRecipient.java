@@ -24,12 +24,12 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
 import java.text.SimpleDateFormat;
 
-public class CustomEventRecipient extends FrameLayout implements UiEventListener {
+public class CustomEventRecipient extends FrameLayout implements UIEventListener {
     public CustomEventRecipient(Context context) {
         super(context);
         init(context);
@@ -50,14 +50,14 @@ public class CustomEventRecipient extends FrameLayout implements UiEventListener
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }
 
         switch (uiEvent.what) {
             case MsgIds.MSG_CUSTOM_DATA:
-                CustomUiEvent msg = (CustomUiEvent) uiEvent;
+                CustomUIEvent msg = (CustomUIEvent) uiEvent;
                 String currentDate = SimpleDateFormat.getDateTimeInstance().format(msg.getDate());
                 String text = "title: " + msg.getText()
                         + "\ndate: " + currentDate

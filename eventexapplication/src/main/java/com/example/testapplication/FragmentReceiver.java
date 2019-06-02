@@ -27,13 +27,13 @@ import android.widget.EditText;
 
 import android.support.v4.app.Fragment;
 
-import dev.uchitel.eventex.UiEvent;
-import dev.uchitel.eventex.UiEventListener;
+import dev.uchitel.eventex.UIEvent;
+import dev.uchitel.eventex.UIEventListener;
 
 /**
  *
  */
-public class FragmentReceiver extends Fragment implements UiEventListener {
+public class FragmentReceiver extends Fragment implements UIEventListener {
     private EditText editText;
 
     public FragmentReceiver() {
@@ -49,7 +49,7 @@ public class FragmentReceiver extends Fragment implements UiEventListener {
     }
 
     @Override
-    public boolean onMessage(@NonNull UiEvent uiEvent) {
+    public boolean onMessage(@NonNull UIEvent uiEvent) {
         if (!uiEvent.isAppNamespace()) {
             return false;
         }

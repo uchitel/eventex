@@ -20,11 +20,10 @@ package com.example.testapplication;
 
 import android.os.Bundle;
 
-import dev.uchitel.eventex.UiEvent;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import dev.uchitel.eventex.UIEvent;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,16 +64,16 @@ public class FragmentSender extends Fragment implements View.OnClickListener {
         String text = button.getText().toString();
         switch (v.getId()) {
             case R.id.view_btn:
-                new UiEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(v);
+                new UIEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(v);
                 break;
             case R.id.viewgroup_btn:
-                new UiEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(fragView);
+                new UIEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(fragView);
                 break;
             case R.id.fragment_btn:
-                new UiEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(this);
+                new UIEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(this);
                 break;
             case R.id.activity_btn:
-                new UiEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(getActivity());
+                new UIEvent(MsgIds.MSG_WITH_TEXT).setText(text).post(getActivity());
                 break;
         }
     }
