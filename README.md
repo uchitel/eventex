@@ -150,11 +150,11 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 No special requirements for R8 or ProGuard
 
 #### Do you think it might be useful? Help devs to find it.
-[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=%23androiddev%20Delete%20all%20those%20listeners%20from%20your%20application...&url=https://github.com/uchitel/eventex)
-[<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library)
+[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&url=https://github.com/uchitel/eventex&hashtags=%23androiddev)
+[<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library!)
 [<img src="icons/linkedin.png" width=64>](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&summary=Delete%20all%20those%20listeners%20from%20your%20Android%20application...&source=https://github.com/uchitel/eventex)
 [<img src="icons/facebook.png" width=64>](https://www.facebook.com/sharer/sharer.php?u=https://github.com/uchitel/eventex)
-[<img src="icons/vkontakte.png" width=64>](https://vk.com/share.php?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&description=Delete%20all%20those%20listeners%20from%20your%20application...&image=https://github.com/uchitel/eventex/icons/eventex-android-library-256.png&noparse=true)
+[<img src="icons/vkontakte.png" width=64>](https://vk.com/share.php?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&comment=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&image=https://raw.githubusercontent.com/uchitel/eventex/master/icons/eventex-android-312.jpg&noparse=true)
 [<img src="icons/xing.png" width=64>](https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=https://github.com/uchitel/eventex)
 
 #### Alternative libraries
