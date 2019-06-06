@@ -41,7 +41,7 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LayoutTest extends TestUtils {
+public class PostToLayoutTest extends TestUtils {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -63,7 +63,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 0),
                         isDisplayed()));
@@ -106,7 +106,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 1),
                         isDisplayed()));
@@ -147,7 +147,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 2),
                         isDisplayed()));
@@ -188,7 +188,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 3),
                         isDisplayed()));
@@ -229,7 +229,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 4),
                         isDisplayed()));
@@ -270,7 +270,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 5),
                         isDisplayed()));
@@ -313,7 +313,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 6),
                         isDisplayed()));
@@ -354,7 +354,7 @@ public class LayoutTest extends TestUtils {
                         childAtPosition(
                                 allOf(withId(R.id.recycler_view_id),
                                         childAtPosition(
-                                                withClassName(is("com.example.testapplication.RVLayout")),
+                                                withClassName(is("com.example.testapplication.RVPostMessage")),
                                                 0)),
                                 7),
                         isDisplayed()));

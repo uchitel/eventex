@@ -58,7 +58,7 @@ public class FourButtonsTest {
         appCompatButton.perform(click());
 
         ViewInteraction editText = onView(
-                allOf(withId(R.id.text_reciever_frag), withText("From View"),
+                allOf(withId(R.id.text_receiver_frag), withText("From View"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.frame1),
@@ -73,7 +73,7 @@ public class FourButtonsTest {
         appCompatButton2.perform(click());
 
         ViewInteraction editText2 = onView(
-                allOf(withId(R.id.text_reciever_frag), withText("From ViewGroup"),
+                allOf(withId(R.id.text_receiver_frag), withText("From ViewGroup"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.frame1),
@@ -88,7 +88,7 @@ public class FourButtonsTest {
         appCompatButton3.perform(click());
 
         ViewInteraction editText3 = onView(
-                allOf(withId(R.id.text_reciever_frag), withText("From Fragment"),
+                allOf(withId(R.id.text_receiver_frag), withText("From Fragment"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.frame1),
@@ -103,7 +103,7 @@ public class FourButtonsTest {
         appCompatButton4.perform(click());
 
         ViewInteraction editText4 = onView(
-                allOf(withId(R.id.text_reciever_frag), withText("From Activity"),
+                allOf(withId(R.id.text_receiver_frag), withText("From Activity"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.frame1),

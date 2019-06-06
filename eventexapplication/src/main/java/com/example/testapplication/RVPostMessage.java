@@ -36,20 +36,19 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dev.uchitel.eventex.UIEvent;
 
-public class RVLayout extends FrameLayout {
-    RecyclerView recyclerView;
+public class RVPostMessage extends FrameLayout {
 
-    public RVLayout(@NonNull Context context) {
+    public RVPostMessage(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public RVLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public RVPostMessage(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public RVLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RVPostMessage(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -61,16 +60,13 @@ public class RVLayout extends FrameLayout {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             spanCount = 2;
         }
-        recyclerView = findViewById(R.id.recycler_view_id);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_id);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
         recyclerView.setAdapter(new RvAdapter(getContext()));
     }
 
-    /*
-
-     */
     private static class RvAdapter extends RecyclerView.Adapter<RvAdapter.RvViewHolder> {
-        String[] planetList;
+        final String[] planetList;
 
         RvAdapter(Context context) {
             planetList = context.getResources().getStringArray(R.array.planets);
@@ -110,7 +106,7 @@ public class RVLayout extends FrameLayout {
                         new UIEvent(MsgIds.MSG_TO_ACTIVITY_INTERCEPT).setText(text).post(v1);
                         break;
                     default:
-                        Log.d("RVLayout", "unprocessed message " + text);
+                        Log.d("RVPostMessage", "unprocessed message " + text);
                         break;
                 }
             });
@@ -128,8 +124,8 @@ public class RVLayout extends FrameLayout {
         }
 
         static class RvViewHolder extends RecyclerView.ViewHolder {
-            TextView text;
-            View view;
+            final TextView text;
+            final View view;
 
             RvViewHolder(View itemView) {
                 super(itemView);

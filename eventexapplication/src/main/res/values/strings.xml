@@ -35,6 +35,7 @@
     <string name="child_layout_title">Child Layout</string>
     <string name="grandchild_layout_title">Grandchild Layout</string>
     <string name="number">number</string>
+    <string name="text5">5</string>
 
     <!-- List for Recycler View-->
     <array name="planets">

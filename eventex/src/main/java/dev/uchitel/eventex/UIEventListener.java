@@ -26,8 +26,8 @@ import androidx.annotation.NonNull;
  */
 public interface UIEventListener {
     /**
-     * Override this function to be notified of {@link dev.uchitel.eventex.UIEvent UIEvent} events. Any class deived from
-     * Activity, Fragment, or ViewGroup can override function onMessage.
+     * Override this function to be notified of {@link dev.uchitel.eventex.UIEvent UIEvent} events.
+     * Any class which extends Activity, Fragment, or ViewGroup can override function onMessage.
      * <p>
      * The system implements children-first order of notification.
      *

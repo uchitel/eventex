@@ -4,7 +4,7 @@
  <tr>
     <td>Android library to exchange messages between Fragments, ViewGroups, Activity.
 No need to create interfaces and pass listeners to multiple classes.
-There is also no need to subscribe/unsibscribe for events!
+There is also no need to subscribe/unsubscribe for events!
 </td>
     <td width="386"><img width="384" height="256"  src="icons/eventex-android-library-256.png"></td>
  </tr>
@@ -37,11 +37,12 @@ work well if the class extends Activity, ViewGroup, or any layout
 derived from ViewGroup (LinearLayout, FrameLayout, etc..)
 
 ### Features
-- asynchronously deliver messages between components of an Activity.
-- no need to subscribe/unsubscribe to receive messages.
-- completely decouples components.
-- no reflection and no ProGuard rules.
-- tiny code size.
+- Delivers messages between UI components of an Activity.
+- Supports synchronous and asynchronous communication.
+- No need to subscribe/unsubscribe to receive messages.
+- Completely decouples components.
+- No reflection and no ProGuard rules.
+- Tiny code size.
 
 ### Requirements
 - Android 4.1.0(API 16) or above.
@@ -57,15 +58,19 @@ Make sure Java 8 (1.8) support is enabled in the gradle file
 ```
 Add EventEx to the project gradle file (Android**x** based projects)
 ```
-implementation 'dev.uchitel:eventex:0.2.0'
+implementation 'dev.uchitel:eventex:0.3.0'
 ```
 
 Or for Android Support Library projects
 ```
-implementation 'dev.uchitel:eventex-support:0.2.0'
+implementation 'dev.uchitel:eventex-support:0.3.0'
 ```
 
 ### More Details
+Message can be sent synchronously
+``` java
+new UIEvent(12345).send(viewGroup);
+```
 
 Message can carry additional integer and string value:
 ``` java
@@ -80,8 +85,6 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 //  .....
     @Override
     public boolean onMessage(@NonNull UIEvent uiEvent) {
-        if (!uiEvent.isAppNamespace()) return false;
-
         switch (uiEvent.code) {
             case 12345:
                 Log.d("FragmentReceiver", "text="+uiEvent.getText());
@@ -104,8 +107,6 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 //  .....
     @Override
     public boolean onMessage(@NonNull UIEvent uiEvent) {
-        if (!uiEvent.isAppNamespace()) return false;
-
         switch (uiEvent.code) {
             case 12345:
                 if(uiEvent.what.equals("button.ok.click")){
@@ -133,7 +134,7 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 //  .....
     @Override
     public boolean onMessage(@NonNull UIEvent uiEvent) {
-        // return if this is not library message
+        // return false if this is not library message
         if (!uiEvent.getNamespace().equals("libname.company.com")) return false;
 
         switch (uiEvent.what){
@@ -150,12 +151,12 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 No special requirements for R8 or ProGuard
 
 #### Do you think it might be useful? Help devs to find it.
-[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&url=https://github.com/uchitel/eventex&hashtags=%23androiddev)
+[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&url=https://github.com/uchitel/eventex&hashtags=androiddev,eventbus)
 [<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library!)
-[<img src="icons/linkedin.png" width=64>](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&summary=Delete%20all%20those%20listeners%20from%20your%20Android%20application...&source=https://github.com/uchitel/eventex)
+[<img src="icons/linkedin.png" width=64>](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&summary=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&source=https://github.com/uchitel/eventex)
 [<img src="icons/facebook.png" width=64>](https://www.facebook.com/sharer/sharer.php?u=https://github.com/uchitel/eventex)
 [<img src="icons/vkontakte.png" width=64>](https://vk.com/share.php?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&comment=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&image=https://raw.githubusercontent.com/uchitel/eventex/master/icons/eventex-android-312.jpg&noparse=true)
-[<img src="icons/xing.png" width=64>](https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=https://github.com/uchitel/eventex)
+[<img src="icons/xing.png" width=64>](https://www.xing.com/spi/shares/new?url=https://github.com/uchitel/eventex)
 
 #### Alternative libraries
  - [Event Bus](https://github.com/greenrobot/EventBus)

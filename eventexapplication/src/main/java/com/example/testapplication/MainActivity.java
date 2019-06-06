@@ -28,20 +28,23 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
 import dev.uchitel.eventex.UIEvent;
 import dev.uchitel.eventex.UIEventListener;
 
 public class MainActivity extends AppCompatActivity implements Button.OnClickListener, UIEventListener {
     private static final String TAG = "MainActivity";
 
-    int current = R.id.button1;
+    private int current = R.id.button1;
     @Nullable
-    ViewGroup frame1 = null;
+    private ViewGroup frame1 = null;
     @Nullable
-    ViewGroup frame2 = null;
+    private ViewGroup frame2 = null;
+    @Nullable
+    private TextView toastText = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         setContentView(R.layout.activity_main);
         frame1 = findViewById(R.id.frame1);
         frame2 = findViewById(R.id.frame2);
+        toastText = findViewById(R.id.toastView);
 
         prepareLayout(current, savedInstanceState);
     }
@@ -77,7 +81,12 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             case R.id.button4:
                 createLayout4();
                 break;
+            case R.id.button5:
+                createLayout5();
+                break;
         }
+        showToast(getString(R.string.empty));
+
     }
 
     private void createLayout1(@Nullable Bundle bundle) {
@@ -88,15 +97,17 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             getSupportFragmentManager().beginTransaction().replace(R.id.frame1, new FragmentReceiver(), "fragment1Tag").commit();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame2, new FragmentSender(), "fragment2Tag").commit();
         }
+        setTitle("Four Buttons");
     }
 
     private void createLayout2() {
-        LayoutParent reciever = new LayoutParent(this);
-        updateLayout(frame1, reciever);
+        LayoutParent receiver = new LayoutParent(this);
+        updateLayout(frame1, receiver);
 
 
-        RVLayout rvLayout = new RVLayout(this);
+        RVPostMessage rvLayout = new RVPostMessage(this);
         updateLayout(frame2, rvLayout);
+        setTitle("Layouts Post");
     }
 
     private void createLayout3(@Nullable Bundle bundle) {
@@ -107,16 +118,28 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             getSupportFragmentManager().beginTransaction().replace(R.id.frame1, new FragmentParent(), "fragment1Tag").commit();
         }
 
-        RVLayout rvLayout = new RVLayout(this);
+        RVPostMessage rvLayout = new RVPostMessage(this);
         updateLayout(frame2, rvLayout);
+        setTitle("Fragments Post");
     }
 
     private void createLayout4() {
+        LayoutParent reciever = new LayoutParent(this);
+        updateLayout(frame1, reciever);
+
+
+        RVSendMessage rvLayout = new RVSendMessage(this);
+        updateLayout(frame2, rvLayout);
+        setTitle("Layouts Send");
+    }
+
+    private void createLayout5() {
         CustomEventRecipient topLayout = new CustomEventRecipient(this);
         updateLayout(frame1, topLayout);
 
         ComplexObjectSender bottomLayout = new ComplexObjectSender(this);
         updateLayout(frame2, bottomLayout);
+        setTitle("Custom Data");
     }
 
     private void updateLayout(@Nullable ViewGroup parent, @Nullable View view) {
@@ -159,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         switch (uiEvent.what) {
             case MsgIds.MSG_TO_ACTIVITY:
-                Toast.makeText(this, "Activity " + uiEvent.getText(), Toast.LENGTH_SHORT).show();
+                showToast("Activity " + uiEvent.getText());
                 return true;
             // should not happen
             case MsgIds.MSG_TO_GRANDCHILD:
@@ -169,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             case MsgIds.MSG_TO_ACTIVITY_INTERCEPT:
             case MsgIds.MSG_TO_PARENT_INTERCEPT:
             case MsgIds.MSG_TO_CHILD_INTERCEPT:
-                Toast.makeText(this, "Error: " + uiEvent.getText(), Toast.LENGTH_SHORT).show();
+                showToast("Error: " + uiEvent.getText());
         }
         return false;
     }
@@ -183,9 +206,14 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         switch (uiEvent.what) {
             case MsgIds.MSG_TO_ACTIVITY_INTERCEPT:
-                Toast.makeText(this, "Activity " + uiEvent.getText(), Toast.LENGTH_SHORT).show();
+                showToast("Activity " + uiEvent.getText());
                 return true;
         }
         return false;
+    }
+
+    private void showToast(String text) {
+        if (toastText != null)
+            toastText.setText(text);
     }
 }

@@ -21,6 +21,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
     </style>
 
     <style name="orientation1">
@@ -30,12 +31,12 @@
     <style name="container1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">0.6</item>
+        <item name="android:layout_weight">0.55</item>
     </style>
     <style name="container2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">0.4</item>
+        <item name="android:layout_weight">0.45</item>
     </style>
 
     <style name="buttonBarStyle">

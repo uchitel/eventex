@@ -47,7 +47,7 @@ import static org.junit.Assert.assertTrue;
 @Config(shadows = ShadowLog.class)
 public class MainActivityUnitTest {
     @Rule
-    public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
+    public final ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
 
     private static final String TEXT = "some text";
     private MainActivity activity;
@@ -76,7 +76,7 @@ public class MainActivityUnitTest {
     public void messageFromView_shouldBeProcessed() {
         View sender = activity.findViewById(R.id.view_btn);
         assertNotNull(sender);
-        EditText recipient = activity.findViewById(R.id.text_reciever_frag);
+        EditText recipient = activity.findViewById(R.id.text_receiver_frag);
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
@@ -90,7 +90,7 @@ public class MainActivityUnitTest {
     public void messageFromViewGroup_shouldBeProcessed() {
         ViewGroup sender = activity.findViewById(R.id.frame1);
         assertNotNull(sender);
-        EditText recipient = activity.findViewById(R.id.text_reciever_frag);
+        EditText recipient = activity.findViewById(R.id.text_receiver_frag);
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
@@ -105,7 +105,7 @@ public class MainActivityUnitTest {
         List<Fragment> list = activity.getSupportFragmentManager().getFragments();
         Fragment fragment = list.get(0);
         assertNotNull(fragment);
-        EditText recipient = activity.findViewById(R.id.text_reciever_frag);
+        EditText recipient = activity.findViewById(R.id.text_receiver_frag);
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
@@ -120,7 +120,7 @@ public class MainActivityUnitTest {
         List<Fragment> list = activity.getSupportFragmentManager().getFragments();
         Fragment fragment = list.get(1);
         assertNotNull(fragment);
-        EditText recipient = activity.findViewById(R.id.text_reciever_frag);
+        EditText recipient = activity.findViewById(R.id.text_receiver_frag);
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 
@@ -132,7 +132,7 @@ public class MainActivityUnitTest {
 
     @Test
     public void messageFromActivity_toFragment_shouldBeProcessed() {
-        EditText recipient = activity.findViewById(R.id.text_reciever_frag);
+        EditText recipient = activity.findViewById(R.id.text_receiver_frag);
         assertNotNull(recipient);
         assertNotEquals(TEXT, recipient.getText().toString());
 

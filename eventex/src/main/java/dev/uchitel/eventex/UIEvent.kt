@@ -125,7 +125,7 @@ open class UIEvent : Parcelable {
      */
     @JvmOverloads
     constructor(code: Int, what: String = "") {
-        assert(!(code == 0 && what.isEmpty())) { "UIEvent invalid paraemters compbination." }
+        assert(!(code == 0 && what.isEmpty())) { "UIEvent invalid parameters combination." }
         this.code = code
         this.what = what
     }
@@ -145,6 +145,44 @@ open class UIEvent : Parcelable {
         number = uiEvent.number
         namespace = uiEvent.namespace
         sent = uiEvent.sent
+    }
+
+    /**
+     * Synchronously send message to Activity, all Fragments, and UI components
+     * of the current activity.
+     * The message will not be sent if the view [sentBy] is detached from the activity view.
+     *
+     * @param sentBy current UI component that is sending this message. Any class derived from
+     * View is a good candidate.
+     */
+    @UiThread
+    fun send(sentBy: View): Boolean {
+        sent = true
+        return sentBy.sendMessage(this)
+    }
+
+    /**
+     * Synchronously send message to Activity, all Fragments, and UI components
+     * of the current activity.
+     * The message will not be sent if the [sentBy] view is detached from the activity view.
+     *
+     * @param sentBy current Fragment that is sending this message.
+     */
+    @UiThread
+    fun send(sentBy: Fragment): Boolean {
+        sent = true
+        return sentBy.sendMessage(this)
+    }
+
+    /**
+     * Synchronously send message to all Fragments and UI components of the current activity.
+     *
+     * @param sentBy current Activity.
+     */
+    @UiThread
+    fun send(sentBy: Activity): Boolean {
+        sent = true
+        return sentBy.sendMessage(this)
     }
 
     /**

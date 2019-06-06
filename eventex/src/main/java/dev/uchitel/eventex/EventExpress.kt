@@ -56,7 +56,20 @@ internal fun View.postMessage(uiEvent: UIEvent) {
 }
 
 @UiThread
-private fun Activity.sendMessage(uiEvent: UIEvent): Boolean {
+internal fun Fragment.sendMessage(uiEvent: UIEvent): Boolean {
+    assert(activity != null) { "Fragment must be attached to activity to send UIEvent." }
+    return activity?.sendMessage(uiEvent) ?: false
+}
+
+@UiThread
+internal fun View.sendMessage(uiEvent: UIEvent): Boolean {
+    val activity: Activity? = getActivity(context)
+    assert(activity != null) { "View must be attached to view hierarchy to send UIEvent." }
+    return activity?.sendMessage(uiEvent) ?: false
+}
+
+@UiThread
+internal fun Activity.sendMessage(uiEvent: UIEvent): Boolean {
     (this as? UIEventListener)?.run {
         if (onMessageIntercept(uiEvent))
             return true

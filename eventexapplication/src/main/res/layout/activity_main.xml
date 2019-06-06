@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /******************************************************************************
   ~   Copyright (C) 2019 Alexander Uchitel.
   ~
@@ -28,13 +27,27 @@
         android:id="@+id/frame1"
         style="@style/container1" />
 
-    <FrameLayout
-        android:id="@+id/frame2"
-        style="@style/container2" />
+    <LinearLayout
+        style="@style/container2"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frame2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/toastView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTopPanel"
+            android:text="@string/empty" />
+    </LinearLayout>
 
     <LinearLayout
         style="@style/buttonBarStyle"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <Button
             android:id="@+id/button1"
@@ -72,6 +85,14 @@
             android:onClick="onClick"
             android:text="@string/text4" />
 
+        <Button
+            android:id="@+id/button5"
+            style="?android:attr/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@string/text5" />
     </LinearLayout>
 
 </LinearLayout>
