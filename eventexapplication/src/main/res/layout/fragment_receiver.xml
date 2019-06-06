@@ -21,11 +21,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGreen"
+    android:background="@color/colorTopPanel"
     tools:context=".FragmentReceiver">
 
     <TextView
-        android:id="@+id/title_reciever_frag"
+        android:id="@+id/title_receiver_frag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fragment_receiver"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/text_reciever_frag"
+        android:id="@+id/text_receiver_frag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -44,6 +44,6 @@
         android:inputType="none"
         android:text="@string/empty"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_reciever_frag" />
+        app:layout_constraintTop_toBottomOf="@id/title_receiver_frag" />
 
 </android.support.constraint.ConstraintLayout>

@@ -18,17 +18,16 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGreen"
+    android:background="@color/colorTopPanel"
     android:orientation="vertical"
-    android:paddingTop="@dimen/padding8"
-    android:paddingLeft="@dimen/padding16"
     android:paddingStart="@dimen/padding16"
+    android:paddingLeft="@dimen/padding16"
+    android:paddingTop="@dimen/padding8"
+    android:paddingEnd="@dimen/padding8"
     android:paddingRight="@dimen/padding16"
-    android:paddingEnd="@dimen/padding16"
-    android:paddingBottom="@dimen/padding16">
+    android:paddingBottom="@dimen/padding8">
 
     <TextView
         android:id="@+id/parent_title_text"
@@ -43,14 +42,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
+        android:hint="@string/empty"
         android:inputType="none"
-        android:text="@string/empty"
-        android:hint="@string/empty" />
+        android:text="@string/empty" />
 
     <FrameLayout
         android:id="@+id/frame_child"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.95" />
+        android:layout_weight="1" />
 
 </LinearLayout>

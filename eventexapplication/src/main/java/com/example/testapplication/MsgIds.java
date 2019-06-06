@@ -22,6 +22,7 @@ package com.example.testapplication;
  * Set of unique strings to identify UIEvent messages
  */
 class MsgIds {
+    static final String MSG_UNPROCESSED = "msg unprocessed";
     static final String MSG_WITH_TEXT = "msg with text";
     static final String MSG_TO_ACTIVITY = "to activity";
     static final String MSG_TO_PARENT = "to parent";

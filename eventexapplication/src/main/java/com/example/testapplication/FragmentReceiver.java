@@ -44,7 +44,7 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_receiver, container, false);
-        editText = view.findViewById(R.id.text_reciever_frag);
+        editText = view.findViewById(R.id.text_receiver_frag);
         return view;
     }
 

@@ -26,7 +26,7 @@ import org.robolectric.annotation.Implements;
 
 @SuppressWarnings("unused")
 @Implements(Log.class)
-public class ShadowLog {
+class ShadowLog {
     private static final StringBuilder buffer = new StringBuilder();
 
     public static int e(java.lang.String tag, java.lang.String msg) {

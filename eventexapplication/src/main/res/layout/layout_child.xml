@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /******************************************************************************
   ~   Copyright (C) 2019 Alexander Uchitel.
   ~
@@ -19,17 +18,15 @@
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#66eeeeee"
-    android:paddingTop="@dimen/padding8"
-    android:paddingLeft="@dimen/padding16"
     android:paddingStart="@dimen/padding16"
+    android:paddingLeft="@dimen/padding16"
+    android:paddingTop="@dimen/padding8"
+    android:paddingEnd="@dimen/padding8"
     android:paddingRight="@dimen/padding16"
-    android:paddingEnd="@dimen/padding16"
-    android:paddingBottom="@dimen/padding16"
->
+    android:paddingBottom="@dimen/padding8">
 
     <TextView
         android:id="@+id/child_title_text"
@@ -45,7 +42,7 @@
         android:id="@+id/child_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin16"
+        android:layout_marginBottom="@dimen/margin8"
         android:focusable="false"
         android:hint="@string/message_will_appear_here"
         android:inputType="none"

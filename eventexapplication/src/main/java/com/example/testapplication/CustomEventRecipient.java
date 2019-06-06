@@ -62,7 +62,7 @@ public class CustomEventRecipient extends FrameLayout implements UIEventListener
                 String text = "title: " + msg.getText()
                         + "\ndate: " + currentDate
                         + "\nnumber= " + msg.getNumber();
-                EditText editText = findViewById(R.id.edit_text_reciever);
+                EditText editText = findViewById(R.id.edit_text_receiver);
                 editText.setText(text);
                 return true;
         }
