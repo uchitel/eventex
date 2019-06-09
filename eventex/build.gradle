@@ -52,6 +52,7 @@ dependencies {
     // unit test
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:4.2.1'
+    testImplementation "io.mockk:mockk:1.9"
     testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     // android test
@@ -59,7 +60,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-project.version = '0.3.0'
+project.version = '1.0.0'
 
 project.description = 'Android library to exchange messages between UI components.'
 project.ext.displayName = 'Android Express Events Support'

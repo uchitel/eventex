@@ -224,7 +224,7 @@ open class UIEvent : Parcelable {
     }
 
     override fun toString(): String {
-        return "UIEvent [code=$code, what='$what', namespace=\'$namespace\', number=$number, text=\'$text\']"
+        return "UIEvent [sent=$sent, code=$code, what='$what', namespace=\'$namespace\', number=$number, text=\'$text\']"
     }
 
     private var sent: Boolean = false
