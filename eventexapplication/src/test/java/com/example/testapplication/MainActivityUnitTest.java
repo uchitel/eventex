@@ -69,7 +69,7 @@ public class MainActivityUnitTest {
 
         new UIEvent("invalid_msg").post(viewById);
 
-        assertTrue(ShadowLog.find("w EventEx unprocessed UIEvent [code=0, what='invalid_msg', namespace='', number=0, text='']"));
+        assertTrue(ShadowLog.find("w EventEx unprocessed UIEvent [sent=true, code=0, what='invalid_msg', namespace='', number=0, text='']"));
     }
 
     @Test

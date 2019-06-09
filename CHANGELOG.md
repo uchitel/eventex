@@ -1,3 +1,7 @@
+## Version 1.0.0 (June 9, 2019)
+- More tests
+- Update dependencies versions
+
 ## Version 0.3.0 (June 7, 2019)
 - Add support for synchronous communication
 - More automation testing

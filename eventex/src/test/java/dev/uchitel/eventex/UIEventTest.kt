@@ -18,9 +18,11 @@
 
 package dev.uchitel.eventex
 
+import android.app.Activity
 import android.content.Context
 import android.os.Parcel
 import android.view.View
+import io.mockk.*
 
 import org.junit.Before
 import org.junit.Test
@@ -30,16 +32,19 @@ import org.robolectric.RuntimeEnvironment
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
 class UIEventTest {
 
     private var context: Context? = null
+    private var activity: Activity? = null
 
     @Before
     fun setUp() {
         context = RuntimeEnvironment.systemContext
+        activity = Robolectric.buildActivity(Activity::class.java).create().start().resume().get()
     }
 
     @Test
@@ -51,8 +56,13 @@ class UIEventTest {
         assertTrue(subject.isAppNamespace())
     }
 
+    @Test(expected = AssertionError::class)
+    fun constructor2Params_invalidValues_shouldAssert() {
+        UIEvent(0, "")
+    }
+
     @Test
-    fun constructor1Param_shouldSucceed() {
+    fun constructorString_shouldSucceed() {
         val subject = UIEvent("event_id")
 
         assertEquals(0, subject.code.toLong())
@@ -61,13 +71,22 @@ class UIEventTest {
     }
 
     @Test(expected = AssertionError::class)
-    fun constructor2Params_invalidValues_shouldAssert() {
-        UIEvent(0, "")
+    fun constructorString_invalidValue_shouldAssert() {
+        UIEvent("")
+    }
+
+    @Test
+    fun constructorInt_shouldSucceed() {
+        val subject = UIEvent(123)
+
+        assertEquals(123, subject.code.toLong())
+        assertEquals("", subject.what)
+        assertTrue(subject.isAppNamespace())
     }
 
     @Test(expected = AssertionError::class)
-    fun constructor1Param_invalidValue_shouldAssert() {
-        UIEvent("")
+    fun constructorInt_invalidValue_shouldAssert() {
+        UIEvent(0)
     }
 
     @Test
@@ -96,23 +115,42 @@ class UIEventTest {
     }
 
     @Test
-    fun postByView_shouldSetFlagSent() {
-        val v = View(context)
+    fun postByView_shouldPostMessage() {
+        val v = View(activity)
+        activity?.setContentView(v)
         val subject = UIEvent(1234)
         assertFalse(subject.isSent())
 
-        try {
-            subject.post(v)
-        } catch (ignored: Throwable) {
+        mockkStatic("dev.uchitel.eventex.EventExpress")
+        spyk(v)
+
+        subject.post(v)
+
+        assertTrue(subject.isSent())
+        verify { v.postMessage(eq(subject)) }
+    }
+
+    @Test
+    fun postByActivity_shouldPostMessage() {
+        val subject = UIEvent(1234)
+        assertFalse(subject.isSent())
+
+        spyk<Activity>()
+        mockkStatic("dev.uchitel.eventex.EventExpress")
+
+        activity?.also {
+            subject.post(it)
         }
 
         assertTrue(subject.isSent())
+        verify { activity?.postMessage(eq(subject)) }
     }
 
     @Test(expected = AssertionError::class)
     fun setText_afterPost_shouldAssert() {
         val v = View(context)
         val subject = UIEvent(1234)
+
         subject.post(v)
 
         subject.setText("text1")
