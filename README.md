@@ -2,12 +2,11 @@
 
 <table border="0">
  <tr>
-    <td>Android library to exchange messages between Fragments, ViewGroups, Activity.
+    <td width="55%">Android library to exchange messages between Fragments, ViewGroups, Activity.
 No need to create interfaces and pass listeners to multiple classes.
 There is also no need to subscribe/unsubscribe for events!
 </td>
-    <td width="386"><img width="384" height="256"  src="icons/eventex-android-library-256.png"></td>
- </tr>
+    <td width="45%"><img width="100%" src="icons/eventex-android-library-256.png"></td>
 </table>
 
 ### Simple
@@ -30,7 +29,7 @@ public class CustomFragment extends Fragment implements UIEventListener {
     }
 }
 ```
-Much less boilerplate code compare to classic solution
+No need to <a href="https://newfivefour.com/android-item-click-listener-recyclerview.html">setOnItemClickListener</a> in the RecyclerView.Adapter! Much less boilerplate code compare to classic solution
 <a href="https://developer.android.com/training/basics/fragments/communicating.html">Communicate with other fragments</a>!
 Class CustomFragment extends Android class Fragment. It will also
 work well if the class extends Activity, ViewGroup, or any layout
@@ -151,8 +150,8 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 No special requirements for R8 or ProGuard
 
 #### Do you think it might be useful? Help devs to find it.
-[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&url=https://github.com/uchitel/eventex&hashtags=androiddev,eventbus)
-[<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library!)
+[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Amazing%20Android%20library.%20Try%20it!&url=https://github.com/uchitel/eventex&hashtags=androiddev,library)
+[<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Amazing%20Android%20library.%20Try%20it!)
 [<img src="icons/linkedin.png" width=64>](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&summary=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&source=https://github.com/uchitel/eventex)
 [<img src="icons/facebook.png" width=64>](https://www.facebook.com/sharer/sharer.php?u=https://github.com/uchitel/eventex)
 [<img src="icons/vkontakte.png" width=64>](https://vk.com/share.php?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&comment=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&image=https://raw.githubusercontent.com/uchitel/eventex/master/icons/eventex-android-312.jpg&noparse=true)
