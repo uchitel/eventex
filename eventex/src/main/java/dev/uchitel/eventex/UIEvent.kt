@@ -19,6 +19,7 @@
 package dev.uchitel.eventex
 
 import android.app.Activity
+import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.view.View
@@ -37,6 +38,36 @@ import androidx.fragment.app.Fragment
  */
 @Suppress("unused", "WeakerAccess")
 open class UIEvent : Parcelable {
+
+    /**
+     * @param code unique integer to identify this message.
+     * @param what unique string to identify this message, optional.
+     * @constructor Creates an object of UIEvent.
+     */
+    @JvmOverloads
+    constructor(code: Int, what: String = "") {
+        assert(!(code == 0 && what.isEmpty())) { "UIEvent invalid parameters combination." }
+        this.code = code
+        this.what = what
+    }
+
+    /**
+     * Create [UIEvent] with string identifier
+     *
+     * @param what unique string to identify this message. May not be empty string.
+     */
+    constructor(what: String) : this(0, what)
+
+    /**
+     * Copy constructor
+     */
+    constructor(uiEvent: UIEvent) : this(uiEvent.code, uiEvent.what) {
+        text = uiEvent.text
+        number = uiEvent.number
+        namespace = uiEvent.namespace
+        bundle.putAll(uiEvent.bundle)
+        sent = uiEvent.sent
+    }
 
     /**
      * Integer to identify this message. Value 'code' should be unique across application.
@@ -117,35 +148,15 @@ open class UIEvent : Parcelable {
         if (!isSent()) number = value
     }
 
-    /**
-     *
-     * @param code unique integer to identify this message.
-     * @param what unique string to identify this message, optional.
-     * @constructor Creates an object of UIEvent.
-     */
-    @JvmOverloads
-    constructor(code: Int, what: String = "") {
-        assert(!(code == 0 && what.isEmpty())) { "UIEvent invalid parameters combination." }
-        this.code = code
-        this.what = what
+    private val bundle: Bundle = Bundle()
+
+    fun putAll(bundle: Bundle): UIEvent {
+        assert(!isSent()) { "Do not call putAll() after UIEvent has been sent." }
+        if (!isSent()) this.bundle.putAll(bundle)
+        return this
     }
 
-    /**
-     * Create [UIEvent] with string identifier
-     *
-     * @param what unique string to identify this message. May not be empty string.
-     */
-    constructor(what: String) : this(0, what)
-
-    /**
-     * Copy constructor
-     */
-    constructor(uiEvent: UIEvent) : this(uiEvent.code, uiEvent.what) {
-        text = uiEvent.text
-        number = uiEvent.number
-        namespace = uiEvent.namespace
-        sent = uiEvent.sent
-    }
+    fun getAllExtras(): Bundle = bundle.clone() as Bundle
 
     /**
      * Synchronously send message to Activity, all Fragments, and UI components
@@ -237,6 +248,9 @@ open class UIEvent : Parcelable {
     fun isSent(): Boolean = sent
 
     // region equals and hashCode
+    /**
+     * This does <em>not</em> compare any extra data included in the UIEvent.
+     */
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is UIEvent) return false
@@ -247,10 +261,14 @@ open class UIEvent : Parcelable {
         if (what != other.what) return false
         if (namespace != other.namespace) return false
         if (text != other.text) return false
+        // if(bundle != other.getAllExtras()) return false
 
         return true
     }
 
+    /**
+     * This does <em>not</em> take into account any extra data included in the UIEvent.
+     */
     override fun hashCode(): Int {
         var result = what.hashCode()
         result = 31 * result + code
@@ -258,6 +276,7 @@ open class UIEvent : Parcelable {
         result = 31 * result + text.hashCode()
         result = 31 * result + number
         result = 31 * result + sent.hashCode()
+        // result = 31 * result + bundle.hashCode()
         return result
     }
     // endregion
@@ -270,6 +289,7 @@ open class UIEvent : Parcelable {
         what = parcel.readString()?.toString() ?: ""
         text = parcel.readString()?.toString() ?: ""
         namespace = parcel.readString()?.toString() ?: ""
+        bundle.readFromParcel(parcel)
     }
 
     override fun describeContents() = 0
@@ -281,6 +301,7 @@ open class UIEvent : Parcelable {
         parcel.writeString(what)
         parcel.writeString(text)
         parcel.writeString(namespace)
+        parcel.writeBundle(bundle)
     }
 
     companion object {

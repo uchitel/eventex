@@ -34,6 +34,8 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
+import android.os.Bundle
+
 
 @RunWith(RobolectricTestRunner::class)
 class UIEventTest {
@@ -175,7 +177,22 @@ class UIEventTest {
     }
 
     @Test
-    fun toParcel_fromParcel_shouldReturnValidCopy() {
+    fun putAll_getAllExtras_withValidBundle_returnsBundleCopy() {
+        val bundle = Bundle()
+        bundle.putInt("int", 123)
+        bundle.putString("string", "1234")
+        bundle.putFloat("float", 12.3F)
+        bundle.putString("null_str", null)
+        bundle.putBundle("child_bundle", Bundle())
+
+        val subject = UIEvent(9876, "unique_string")
+                .putAll(bundle)
+
+        assert(equalBundles(bundle, subject.getAllExtras()))
+    }
+
+    @Test
+    fun toParcel_fromParcel_withEmptyBundle_shouldReturnValidCopy() {
         val parcel = Parcel.obtain()
         val subject = UIEvent(9876, "unique_string")
                 .setNamespace("namespace value")
@@ -187,5 +204,50 @@ class UIEventTest {
         val copy = UIEvent(parcel)
 
         assertEquals(subject, copy)
+        assert(equalBundles(Bundle(), copy.getAllExtras()))
+    }
+
+    @Test
+    fun toParcel_fromParcel_withBundle_shouldReturnValidCopy() {
+        val bundle = Bundle()
+        bundle.putInt("int", 123)
+        bundle.putString("string", "1234")
+        bundle.putFloat("float", 12.3F)
+        bundle.putString("null_str", null)
+        bundle.putBundle("child_bundle", Bundle())
+
+        val parcel = Parcel.obtain()
+        val subject = UIEvent(9876, "unique_string")
+                .setNamespace("namespace value")
+                .setNumber(2345)
+                .setText("text value")
+                .putAll(bundle)
+
+        subject.writeToParcel(parcel, 0)
+        parcel.setDataPosition(0)
+        val copy = UIEvent(parcel)
+
+        assertEquals(subject, copy)
+        assert(equalBundles(bundle, copy.getAllExtras()))
+    }
+
+    fun equalBundles(one: Bundle, two: Bundle): Boolean {
+        if (one.size() != two.size())
+            return false
+
+        var v1: Any?
+        var v2: Any?
+
+        for (key in one.keySet()) {
+            v1 = one.get(key)
+            v2 = two.get(key)
+            if (v1 is Bundle && v2 is Bundle) {
+                if (!equalBundles(v1, v2))
+                    return false
+            } else if (v1 != v2)
+                return false
+        }
+
+        return true
     }
 }
