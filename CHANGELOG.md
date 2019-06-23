@@ -1,3 +1,7 @@
+## Version 2.0.0 (June 22, 2019)
+- Add support for Bundle to the UIEvent
+- Update dependencies versions
+
 ## Version 1.0.0 (June 9, 2019)
 - More tests
 - Update dependencies versions

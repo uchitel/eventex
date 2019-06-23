@@ -2,13 +2,30 @@
 
 <table border="0">
  <tr>
-    <td>Android library to exchange messages between Fragments, ViewGroups, Activity.
+    <td width="55%">Android library to send/post data to Fragments, Layouts, Activity.
 No need to create interfaces and pass listeners to multiple classes.
 There is also no need to subscribe/unsubscribe for events!
 </td>
-    <td width="386"><img width="384" height="256"  src="icons/eventex-android-library-256.png"></td>
- </tr>
+    <td width="45%"><img width="100%" src="icons/eventex-android-library-256.png"></td>
 </table>
+
+### Try It Now
+Make sure Java 8 (1.8) support is enabled in the gradle file
+```
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+```
+Add EventEx to the project gradle file (Android**x** based projects)
+```
+implementation 'dev.uchitel:eventex:2.0.0'
+```
+
+Or for Android Support Library projects
+```
+implementation 'dev.uchitel:eventex-support:2.0.0'
+```
 
 ### Simple
 To post message
@@ -30,7 +47,7 @@ public class CustomFragment extends Fragment implements UIEventListener {
     }
 }
 ```
-Much less boilerplate code compare to classic solution
+No need to <a href="https://newfivefour.com/android-item-click-listener-recyclerview.html">setOnItemClickListener</a> in the RecyclerView.Adapter! Much less boilerplate code compare to classic solution
 <a href="https://developer.android.com/training/basics/fragments/communicating.html">Communicate with other fragments</a>!
 Class CustomFragment extends Android class Fragment. It will also
 work well if the class extends Activity, ViewGroup, or any layout
@@ -40,31 +57,10 @@ derived from ViewGroup (LinearLayout, FrameLayout, etc..)
 - Delivers messages between UI components of an Activity.
 - Supports synchronous and asynchronous communication.
 - No need to subscribe/unsubscribe to receive messages.
+- Can deliver any data type.
 - Completely decouples components.
 - No reflection and no ProGuard rules.
 - Tiny code size.
-
-### Requirements
-- Android 4.1.0(API 16) or above.
-- Java 8
-
-### Prerequisites
-Make sure Java 8 (1.8) support is enabled in the gradle file
-```
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-```
-Add EventEx to the project gradle file (Android**x** based projects)
-```
-implementation 'dev.uchitel:eventex:1.0.0'
-```
-
-Or for Android Support Library projects
-```
-implementation 'dev.uchitel:eventex-support:1.0.0'
-```
 
 ### More Details
 Message can be sent synchronously
@@ -72,16 +68,17 @@ Message can be sent synchronously
 new UIEvent(12345).send(viewGroup);
 ```
 
-Message can carry additional integer and string value:
+Message can carry additional integer, string value, and anything that can fit into [Bundle](https://developer.android.com/reference/android/os/Bundle):
 ``` java
 new UIEvent(12345)
     .setText("some text to pass with message")
     .setNumber(9876) // some integer to pass with message
+    .putAll(bundle)
     .post(viewGroup);
 ```
 Next code will properly receive this message:
 ``` java
-public class FragmentReceiver extends Fragment implements UIEventListener {
+public class FragmentReceiver extends FrameLayout implements UIEventListener {
 //  .....
     @Override
     public boolean onMessage(@NonNull UIEvent uiEvent) {
@@ -95,6 +92,7 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
     }
 }
 ```
+Class UIEvent isn't 'final' and can be extended to carry any data. See sample [CustomUIEvent](/eventexapplication/src/main/java/com/example/testapplication/CustomEventSender.kt).
 
 Message can use integer ID, string ID, or both for more complex control scenarios:
 ``` java
@@ -103,7 +101,7 @@ new UIEvent(12345, "button.ok.click"))
 ```
 The 'onMessage' for the above code:
 ``` java
-public class FragmentReceiver extends Fragment implements UIEventListener {
+public class FragmentReceiver extends Activity implements UIEventListener {
 //  .....
     @Override
     public boolean onMessage(@NonNull UIEvent uiEvent) {
@@ -147,12 +145,16 @@ public class FragmentReceiver extends Fragment implements UIEventListener {
 }
 ```
 
+### Requirements
+- Android 4.1.0(API 16) or above.
+- Java 8
+
 ### R8 / ProGuard
 No special requirements for R8 or ProGuard
 
 #### Do you think it might be useful? Help devs to find it.
-[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&url=https://github.com/uchitel/eventex&hashtags=androiddev,eventbus)
-[<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library!)
+[<img src="icons/twitter.png" width=64>](https://twitter.com/intent/tweet?text=Amazing%20Android%20library.%20Try%20it!&url=https://github.com/uchitel/eventex&hashtags=androiddev,library)
+[<img src="icons/reddit.png" width=64>](http://www.reddit.com/submit?url=https://github.com/uchitel/eventex&title=Amazing%20Android%20library.%20Try%20it!)
 [<img src="icons/linkedin.png" width=64>](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&summary=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&source=https://github.com/uchitel/eventex)
 [<img src="icons/facebook.png" width=64>](https://www.facebook.com/sharer/sharer.php?u=https://github.com/uchitel/eventex)
 [<img src="icons/vkontakte.png" width=64>](https://vk.com/share.php?url=https://github.com/uchitel/eventex&title=Android%20Must%20Use%20Library&comment=Delete%20all%20those%20listeners%20from%20your%20Android%20application!&image=https://raw.githubusercontent.com/uchitel/eventex/master/icons/eventex-android-312.jpg&noparse=true)

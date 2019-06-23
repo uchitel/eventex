@@ -20,13 +20,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#66eeeeee"
-    android:paddingStart="@dimen/padding16"
-    android:paddingLeft="@dimen/padding16"
-    android:paddingTop="@dimen/padding8"
-    android:paddingEnd="@dimen/padding8"
-    android:paddingRight="@dimen/padding16"
-    android:paddingBottom="@dimen/padding8">
+    android:background="#30ffffff"
+    android:paddingStart="@dimen/padding_large"
+    android:paddingLeft="@dimen/padding_large"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingEnd="@dimen/padding_large"
+    android:paddingRight="@dimen/padding_large"
+    android:paddingBottom="@dimen/padding_large">
 
     <TextView
         android:id="@+id/child_title_text"
@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/child_fragment_text"
-        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +41,6 @@
         android:id="@+id/child_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin8"
         android:focusable="false"
         android:hint="@string/message_will_appear_here"
         android:inputType="none"
@@ -55,7 +53,6 @@
         android:id="@+id/grand_child_cont"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#44eeeeee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -23,4 +23,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBottomPanel"
+    tools:listitem="@android:layout/simple_selectable_list_item"
     tools:itemCount="9" />

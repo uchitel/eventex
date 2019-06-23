@@ -29,6 +29,7 @@
 
     <LinearLayout
         style="@style/container2"
+        android:background="@color/colorTopPanel"
         android:orientation="vertical">
 
         <FrameLayout
@@ -41,7 +42,7 @@
             android:id="@+id/toastView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorTopPanel"
+            android:background="#50ffffff"
             android:text="@string/empty" />
     </LinearLayout>
 

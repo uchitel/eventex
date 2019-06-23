@@ -27,7 +27,7 @@
         android:id="@+id/edit_text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin8"
+        android:layout_margin="@dimen/margin_small"
         android:inputType="text"
         android:text="Custom Event Message"
         app:layout_constraintEnd_toEndOf="parent"

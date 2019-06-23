@@ -14,10 +14,10 @@ android {
 
     defaultConfig {
         applicationId "com.example.testapplication"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -46,7 +46,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     // test
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:4.2.1'
+    testImplementation 'org.robolectric:robolectric:4.3'
     testImplementation 'com.android.support.test:runner:1.0.2'
     testImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"

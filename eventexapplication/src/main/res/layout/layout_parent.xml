@@ -22,20 +22,19 @@
     android:layout_height="match_parent"
     android:background="@color/colorTopPanel"
     android:orientation="vertical"
-    android:paddingStart="@dimen/padding16"
-    android:paddingLeft="@dimen/padding16"
-    android:paddingTop="@dimen/padding8"
-    android:paddingEnd="@dimen/padding8"
-    android:paddingRight="@dimen/padding16"
-    android:paddingBottom="@dimen/padding8">
+    android:paddingStart="@dimen/padding_large"
+    android:paddingLeft="@dimen/padding_large"
+    android:paddingTop="@dimen/padding_small"
+    android:paddingEnd="@dimen/padding_large"
+    android:paddingRight="@dimen/padding_large"
+    android:paddingBottom="@dimen/padding_large">
 
     <TextView
         android:id="@+id/parent_title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/parent_fragment"
-        android:textSize="18sp" />
+        android:text="@string/parent_fragment" />
 
     <EditText
         android:id="@+id/parent_edit_text"

@@ -18,9 +18,5 @@
   -->
 
 <resources>
-    <dimen name="padding_large">16dp</dimen>
-    <dimen name="padding_small">8dp</dimen>
-    <dimen name="margin_large">16dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="text_size_regular">16sp</dimen>
+    <dimen name="text_size_regular">21sp</dimen>
 </resources>

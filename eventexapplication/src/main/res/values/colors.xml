@@ -17,8 +17,8 @@
   -->
 
 <resources>
-    <!--<color name="colorPrimary">#ffffff</color>-->
+    <color name="colorPrimary">#305f72</color>
     <color name="colorPrimaryDark">#305f72</color>
-    <color name="colorTopPanel">#99305f72</color>
+    <color name="colorTopPanel">#CD305F72</color>
     <color name="colorBottomPanel">#c8d9eb</color>
 </resources>
