@@ -19,7 +19,7 @@ Make sure Java 8 (1.8) support is enabled in the gradle file
 ```
 Add EventEx to the project gradle file (Android**x** based projects)
 ```
-implementation 'dev.uchitel:eventex:2.0.0'
+implementation 'dev.uchitel:eventex:2.1.0'
 ```
 
 Or for Android Support Library projects

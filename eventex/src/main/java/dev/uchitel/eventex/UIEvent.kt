@@ -286,9 +286,9 @@ open class UIEvent : Parcelable {
         sent = parcel.readInt() == 1
         code = parcel.readInt()
         number = parcel.readInt()
-        what = parcel.readString()?.toString() ?: ""
-        text = parcel.readString()?.toString() ?: ""
-        namespace = parcel.readString()?.toString() ?: ""
+        what = parcel.readString() ?: ""
+        text = parcel.readString() ?: ""
+        namespace = parcel.readString() ?: ""
         bundle.readFromParcel(parcel)
     }
 

@@ -1,3 +1,8 @@
+## Version 2.1.0 (February 8, 2020)
+- Compille with Android API 29
+- Kotlin version 1.3.61
+- Update dependencies in gradle files
+
 ## Version 2.0.0 (June 22, 2019)
 - Add support for Bundle to the UIEvent
 - Update dependencies versions

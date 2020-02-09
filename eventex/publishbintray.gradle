@@ -6,6 +6,7 @@ def bintrayUserOrg = 'uchitel'
 def bintrayGroup = 'dev.uchitel'
 def siteUrl = 'https://github.com/uchitel/eventex'
 def gitUrl = 'https://github.com/uchitel/eventex.git'
+
 // credentials (bintray.user, bintray.apikey) in ~/.gradle/gradle.properties
 // implementation 'groupId:artifactId:version’
 
